@@ -54,11 +54,7 @@
                 </div>
                 <div class="flex justify-between">
                     <div class="text-right text-gray-400 hover:underline hover:text-gray-100">
-{{--                        <a href="{{route('forgot-password')}}">Forgot your password?</a>--}}
-                        <form action="{{ route('forgot-password') }}" method="POST">
-                            @csrf
-                            <a type="submit">Forgot your password?</a>
-                        </form>
+                        <a href="{{route('forgot-password')}}">Forgot your password?</a>
                     </div>
                     <div class="text-right text-gray-400 hover:underline hover:text-gray-100">
                         <label for="remember">
