@@ -48,9 +48,6 @@
                 <div class="pb-2 pt-4">
                     <input class="block w-full p-4 text-lg rounded-sm bg-black" type="password" name="password_confirmation" id="password_confirmation" placeholder="password_confirmation">
                 </div>
-                <div class="text-right text-gray-400 hover:underline hover:text-gray-100">
-                    <a href="#">Forgot your password?</a>
-                </div>
                 <div class="px-4 pb-2 pt-4">
                     <button class="uppercase block w-full p-4 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">Register</button>
                 </div>
