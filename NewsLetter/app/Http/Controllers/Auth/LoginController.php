@@ -40,15 +40,21 @@ class LoginController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials, $request->filled('remember'))) {
-            $request->session()->regenerate();
+        if(!Auth::validate($credentials)):
+            return redirect()->to('login')
+                ->withErrors(trans('auth.failed'));
+        endif;
 
-            return redirect()->intended('/test');
-        }
+        $user = Auth::getProvider()->retrieveByCredentials($credentials);
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+        Auth::login($user);
+
+        return $this->authenticated($request, $user);
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        return redirect()->intended();
     }
 
     /**
