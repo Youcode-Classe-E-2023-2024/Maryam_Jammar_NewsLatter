@@ -39,7 +39,7 @@
             </h1>
 
             <p class="text-gray-100">
-                Use email your account
+                Use your email account
             </p>
             <form enctype="multipart/form-data" method="post" action="{{route('login')}}"
                   class="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">

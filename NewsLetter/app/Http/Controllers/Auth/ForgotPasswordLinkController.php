@@ -4,16 +4,16 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
 
 
-class LoginController extends Controller
+class ForgotPasswordLinkController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
      */
     public function index()
     {
@@ -27,49 +27,44 @@ class LoginController extends Controller
      */
     public function create()
     {
-        return view('auth.login');
+        return view('auth.reset-request');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::attempt($credentials, $request->filled('remember'))) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('/redacteur');
-        }
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+        $request->validate([
+            'email' => 'required|email',
         ]);
-    }
 
-    protected function authenticated(Request $request, $user)
-    {
-        return redirect()->intended();
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+
+//        dd($status);
+
+        return $status === Password::RESET_LINK_SENT
+            ? back()->with('status', __('success'))
+            : back()->withInput($request->only('email'))->withErrors(['email' => __($status)]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -80,8 +75,8 @@ class LoginController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -92,7 +87,7 @@ class LoginController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

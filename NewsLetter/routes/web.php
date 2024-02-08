@@ -21,13 +21,15 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('guest');
 
-Route::get('/register', [RegisterController::class, 'create'])->name("register");
+Route::get('/register', [RegisterController::class, 'create'])->name("register")
+    ->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
 //login and remember me
-Route::get('/login', [LoginController::class, 'create'])->name("login");
+Route::get('/login', [LoginController::class, 'create'])->name("login")
+    ->middleware('guest');
 Route::post('/login', [LoginController::class, 'store']);
 
 
@@ -43,12 +45,27 @@ Route::get('/test', function () {
     return view('test');
 });
 
+//redacteur
+Route::get('/redacteur', function () {
+    return view('redacteur.dashboard');
+})->middleware('auth');
+Route::get('/create', function () {
+    return view('redacteur.createTemplate');
+});
+Route::get('/templates', function () {
+    return view('redacteur.templates');
+});
+Route::get('/upload', function () {
+    return view('redacteur.upload');
+});
+Route::get('/media', function () {
+    return view('redacteur.media');
+});
 
-
-
-
-
-
+//dashboard
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware('auth');
 
 
 
