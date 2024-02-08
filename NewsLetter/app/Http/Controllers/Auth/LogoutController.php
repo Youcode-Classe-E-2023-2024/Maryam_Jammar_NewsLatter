@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-
-class LoginController extends Controller
+class LogoutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +25,7 @@ class LoginController extends Controller
      */
     public function create()
     {
-        return view('auth.login');
+        //
     }
 
     /**
@@ -38,23 +36,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        $credentials = $request->only('email', 'password');
-
-        if(!Auth::validate($credentials)):
-            return redirect()->to('login')
-                ->withErrors(trans('auth.failed'));
-        endif;
-
-        $user = Auth::getProvider()->retrieveByCredentials($credentials);
-
-        Auth::login($user);
-
-        return $this->authenticated($request, $user);
-    }
-
-    protected function authenticated(Request $request, $user)
-    {
-        return redirect()->intended();
+        //
     }
 
     /**
@@ -97,8 +79,13 @@ class LoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

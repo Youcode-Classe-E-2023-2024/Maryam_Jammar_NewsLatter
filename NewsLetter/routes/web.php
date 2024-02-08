@@ -27,12 +27,11 @@ Route::get('/register', [RegisterController::class, 'create'])->name("register")
     ->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
+//login and remember me
 Route::get('/login', [LoginController::class, 'create'])->name("login");
 Route::post('/login', [LoginController::class, 'store']);
 
-Route::get('/test', function () {
-    return view('test');
-});
+
 //login and remember me
 Route::get('/login', [LoginController::class, 'create'])->name("login")
     ->middleware('guest');
@@ -50,7 +49,9 @@ Route::post('/forgot-password', [ForgotPasswordController::class, 'reset'])->nam
 
 Route::get('/test', function () {
     return view('test');
+
 })->middleware('auth');
+
 
 
 
@@ -64,6 +65,8 @@ Route::get('/test', function () {
 // Password Reset Routes
 Route::get('password/reset', 'App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::post('password/email', 'App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+
 Route::get('password/reset/{token}', [ForgotPasswordController::class, 'showForm'])->name('password.reset')
     ->middleware('guest');
+
 Route::post('password/reset', 'App\Http\Controllers\Auth\ResetPasswordController@reset')->name('password.update');
