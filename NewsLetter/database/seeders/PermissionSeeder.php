@@ -10,15 +10,15 @@ class PermissionSeeder extends Seeder
 {
     public function run()
     {
-        Permission::create(['name' => 'view template']);
-        Permission::create(['name' => 'create template']);
-        Permission::create(['name' => 'send template']);
-        Permission::create(['name' => 'delete template']);
 
-        Permission::create(['name' => 'view media']);
-        Permission::create(['name' => 'upload media']);
-        Permission::create(['name' => 'delete media']);
-        Permission::create(['name' => 'assign role']);
+        Permission::firstOrCreate(['name' => 'create template']);
+        Permission::firstOrCreate(['name' => 'update template']);
+        Permission::firstOrCreate(['name' => 'send template']);
+        Permission::firstOrCreate(['name' => 'delete template']);
+
+        Permission::firstOrCreate(['name' => 'upload media']);
+        Permission::firstOrCreate(['name' => 'delete media']);
+        Permission::firstOrCreate(['name' => 'assign role']);
 
     }
 }
