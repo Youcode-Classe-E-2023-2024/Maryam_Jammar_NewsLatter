@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 
 class RegisterController extends Controller
@@ -51,9 +52,11 @@ class RegisterController extends Controller
         ]);
 
         $fileName = time() . $request->file('picture')->getClientOriginalName();
+        // Dans la fonction store
         $path = $request->file('picture')->storeAs('picture', $fileName, 'public');
-        $picture["picture"] = '/storage/' . $path;
+        $picturePath = Storage::url($path);
 
+        $picture["picture"] = $picturePath;
         /*
         Database Insert
         */
@@ -61,11 +64,22 @@ class RegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'picture' => $request->picture
+            'picture' => $picturePath
         ]);
 
         Auth::login($user);
-        $user->assignRole('user');
+
+//        $user = User::find(1);
+//        $user->assignRole('admin');
+
+        if (User::count() === 1) {
+            // Si c'est le premier utilisateur, lui attribuer le rôle d'administrateur
+            $user->assignRole('admin');
+        } else {
+            // Sinon, attribuer le rôle d'utilisateur normal
+            $user->assignRole('user');
+        }
+
         return redirect(RouteServiceProvider::HOME);
 
     }
