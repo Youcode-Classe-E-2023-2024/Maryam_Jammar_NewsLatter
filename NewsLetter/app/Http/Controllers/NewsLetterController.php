@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Member;
 use Illuminate\Support\Facades\Route;
 
 use App\Events\UserSubscribed;
@@ -46,9 +47,15 @@ class NewsLetterController extends Controller
      * @param \App\Models\NewsLetter $newsLetter
      * @return \Illuminate\Http\Response
      */
-    public function show(NewsLetter $newsLetter)
+    public function show()
     {
-        //
+        $subscribers = Member::where('status', '=', 'subscribed')->paginate(5);
+        $unsubscribers = Member::where('status', '=', 'unsubscribed')->paginate(5);
+//        $unsubscribers = Member::paginate(8);
+
+//        $subscribers = Member::paginate(8);
+        return view('admin.subscribers', compact('subscribers', 'unsubscribers'));
+
     }
 
     /**

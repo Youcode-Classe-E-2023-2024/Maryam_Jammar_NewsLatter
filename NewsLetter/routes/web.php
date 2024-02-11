@@ -73,10 +73,34 @@ Route::get('/media', function () {
     return view('redacteur.media');
 });
 
-//dashboard
+Route::get('/subscribers', function () {
+    return view('redacteur.subscribers');
+});
+
+
+
+//Admin
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware('auth');
+
+//Route::get('/members', function () {
+//    return view('admin.subscribers');
+//});
+
+Route::get('/members', [NewsLetterController::class, 'show']);
+
+Route::get('/allusers', function () {
+    return view('admin.allusers');
+});
+
+Route::get('/templates', function () {
+    return view('admin.templates');
+});
+
+Route::get('/media', function () {
+    return view('admin.media');
+});
 
 
 
