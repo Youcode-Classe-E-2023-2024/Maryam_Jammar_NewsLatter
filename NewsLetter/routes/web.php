@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NewsLetterController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -87,3 +88,6 @@ Route::get('password/reset/{token}', [ForgotPasswordController::class, 'showForm
     ->middleware('guest');
 
 Route::post('password/reset', 'App\Http\Controllers\Auth\ResetPasswordController@reset')->name('password.update');
+
+//Route::get('/welcome' , [NewsLetterController::class, 'index'])->name('welcome');
+Route::post('/subscribe', [NewsLetterController::class, 'subscribe'])->name('subscribe');
