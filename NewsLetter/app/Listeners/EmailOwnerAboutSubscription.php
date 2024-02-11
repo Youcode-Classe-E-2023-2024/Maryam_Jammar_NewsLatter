@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Mail;
 
 class EmailOwnerAboutSubscription
 {
+    protected $email;
+
     /**
      * Create the event listener.
      *
@@ -24,7 +26,7 @@ class EmailOwnerAboutSubscription
     /**
      * Handle the event.
      *
-     * @param  object  $event
+     * @param object $event
      * @return void
      */
 //    public function handle(UserSubscribed $event)
