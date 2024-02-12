@@ -37,11 +37,11 @@ class UserController extends Controller
      */
     public function show()
     {
-        // Charger les utilisateurs avec leurs rôles
         $users = User::with('roles')->paginate(8);
-
-        return view('admin.allusers', compact('users'));
+        $roles = Role::all();
+        return view('admin.allusers', compact('users', 'roles'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -52,7 +52,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+//        $role = U
     }
 
     /**
