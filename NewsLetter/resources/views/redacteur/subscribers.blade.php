@@ -98,7 +98,7 @@
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-									<span
+			<span
                                         class="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
                                         <span aria-hidden
                                               class="absolute inset-0 bg-red-200 opacity-50 rounded-full"></span>
@@ -124,6 +124,7 @@
             &copy;<?php echo date("Y"); ?>. All rights
             reserved.
         </p>
+					
     </div>
 
 </div>
