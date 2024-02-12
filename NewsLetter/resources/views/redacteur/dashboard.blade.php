@@ -16,7 +16,7 @@
                          class="rounded-full border-2 border-blue-700 p-1">
                 </div>
                 <div class="text-center mb-4">
-                    <h2 class="text-xl font-semibold">Arthur Taylor</h2>
+                    <h2 class="text-xl font-semibold text-blue-900">{{ Auth::user()->name }}</h2>
                     <p class="text-gray-600">Lorem Ipsum Neque porro quisquam
                     </p>
                 </div>

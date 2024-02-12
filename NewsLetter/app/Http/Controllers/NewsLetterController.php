@@ -58,6 +58,15 @@ class NewsLetterController extends Controller
 
     }
 
+    public function showS()
+    {
+        $subscribers = Member::where('status', '=', 'subscribed')->paginate(5);
+        $unsubscribers = Member::where('status', '=', 'unsubscribed')->paginate(5);
+
+        return view('redacteur.subscribers', compact('subscribers', 'unsubscribers'));
+
+    }
+
     /**
      * Update the specified resource in storage.
      *

@@ -1,7 +1,9 @@
-@include('admin.side')
-<div class="flex overflow-hidden bg-white">
-    <div class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10" id="sidebarBackdrop"></div>
-    <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
+
+<div class="flex ">
+    @include('redacteur.side')
+
+    <div class="mx-auto w-full relative flex min-h-screen flex-col justify-center overflow-hidden py-6 sm:py-12">
         <main>
             <!-- component -->
             <div class="bg-white p-8 rounded-md">
@@ -70,7 +72,7 @@
                 </div>
 
 
-            {{--unsubscribers--}}
+                {{--unsubscribers--}}
                 <div class="w-3/4 mx-auto">
                     <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                         <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -122,6 +124,6 @@
             &copy;<?php echo date("Y"); ?>. All rights
             reserved.
         </p>
-
     </div>
+
 </div>

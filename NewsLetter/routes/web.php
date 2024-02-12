@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\NewsLetterController;
+use App\Http\Controllers\UserController;
+use App\Models\Media;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -72,14 +74,28 @@ Route::get('/upload', function () {
 Route::get('/media', function () {
     return view('redacteur.media');
 });
-
-Route::get('/subscribers', function () {
+Route::get('/members', function () {
     return view('redacteur.subscribers');
 });
+
+//Route::get('/add-media', function () {
+//    Media::create()
+//
+//        ->addMedia(storage_path('demo/library-dublin.jpg'))
+//        ->toMediaCollection();
+//
+//});
+
+//Route::get('/subscribers', function () {
+//    return view('redacteur.subscribers');
+//});
+Route::get('/subscribers', [NewsLetterController::class, 'showS']);
+
 
 
 
 //Admin
+
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware('auth');
@@ -93,6 +109,8 @@ Route::get('/members', [NewsLetterController::class, 'show']);
 Route::get('/allusers', function () {
     return view('admin.allusers');
 });
+Route::get('/allusers', [UserController::class, 'show']);
+
 
 Route::get('/templates', function () {
     return view('admin.templates');
