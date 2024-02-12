@@ -72,6 +72,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+//        $user->delete();
+
+//        return view('admin.allusers', compact('user'));
+        return redirect()->route('allusers')->with('delete', 'User supprimé avec succès.');
+
     }
 }
