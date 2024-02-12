@@ -52,7 +52,16 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        $role = U
+        $request->validate([
+           'role' => 'required'
+        ]);
+        $role = Role::find($request->role);
+        $user = User::find($id);
+
+        $user->syncRoles($role->name);
+
+        return redirect('allusers')->with('success', 'Role Updated successfully');
+
     }
 
     /**
