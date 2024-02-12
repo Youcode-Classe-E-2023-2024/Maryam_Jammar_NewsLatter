@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MediaController;
 use App\Http\Controllers\NewsLetterController;
 use App\Http\Controllers\UserController;
 use App\Models\Media;
@@ -68,10 +69,18 @@ Route::get('/create', function () {
 Route::get('/templates', function () {
     return view('redacteur.templates');
 });
-Route::get('/upload', function () {
-    return view('redacteur.upload');
-});
-Route::get('/media', function () {
+
+//Media
+//Route::get('/upload', function () {
+//    return view('redacteur.upload');
+//});
+
+Route::get  ('/upload', [MediaController::class, 'index'])->name('upload');
+
+Route::post('/upload', [MediaController::class, 'upload'])->name('upload');
+
+
+Route::get('/all-media', function () {
     return view('redacteur.media');
 });
 Route::get('/members', function () {
@@ -120,6 +129,9 @@ Route::get('/media', function () {
     return view('admin.media');
 });
 
+//Route::get('/editRole', function () {
+//    return view('admin.editRole');
+//});
 
 
 // Password Reset Routes

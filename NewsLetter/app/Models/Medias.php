@@ -9,4 +9,8 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Medias extends Model implements HasMedia
 {
     use InteractsWithMedia;
+
+    protected $fillable = [
+        'user_id'
+    ];
 }
