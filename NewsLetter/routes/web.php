@@ -80,9 +80,11 @@ Route::get  ('/upload', [MediaController::class, 'index'])->name('upload');
 Route::post('/upload', [MediaController::class, 'upload'])->name('upload');
 
 
-Route::get('/all-media', function () {
-    return view('redacteur.media');
-});
+//Route::get('/all-media', function () {
+//    return view('redacteur.media');
+//});
+Route::get('/all-media', [MediaController::class, 'show']);
+
 Route::get('/members', function () {
     return view('redacteur.subscribers');
 });
@@ -119,6 +121,8 @@ Route::get('/allusers', function () {
     return view('admin.allusers');
 });
 Route::get('/allusers', [UserController::class, 'show']);
+Route::post('/allusers/{id}', [UserController::class, 'update']);
+Route::post('/destroy/{id}', [UserController::class, 'destroy']);
 
 
 Route::get('/templates', function () {

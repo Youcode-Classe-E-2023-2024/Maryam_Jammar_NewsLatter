@@ -35,7 +35,6 @@ class MediaController extends Controller
         $media->addMediaFromRequest('image')
             ->toMediaCollection();
 
-
         return back()->with('success', 'Files uploaded successfully!');
     }
 
@@ -45,9 +44,10 @@ class MediaController extends Controller
      * @param  \App\Models\Media  $media
      * @return \Illuminate\Http\Response
      */
-    public function show(Media $media)
+    public function show()
     {
-        //
+        $medias = Medias::all();
+        return view('redacteur.media', compact('medias'));
     }
 
     /**
@@ -68,8 +68,16 @@ class MediaController extends Controller
      * @param  \App\Models\Media  $media
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Media $media)
+    public function destroy($id)
     {
-        //
+        // Find the media by its ID
+        $media = Medias::find($id);
+
+        if (!$media) {
+            return redirect()->back()->with('error', 'Media not found.');
+        }
+        $media->delete();
+
+        return redirect()->back()->with('success', 'Media deleted successfully.');
     }
 }
