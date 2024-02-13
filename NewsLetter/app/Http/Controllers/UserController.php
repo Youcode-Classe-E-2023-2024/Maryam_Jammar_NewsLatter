@@ -94,11 +94,11 @@ class UserController extends Controller
 
     }
 
-//    public function restorePost($id)
-//    {
-//        $user = User::withTrashed()->find($id);
-//        $user->restore();
-//        return redirect()->back()->with('success', 'User restored successfully!');
-//
-//    }
+    public function restoreUser($id)
+    {
+        $user = User::withTrashed()->find($id);
+        $user->restore();
+        return redirect()->back()->with('success', 'User restored successfully!');
+
+    }
 }

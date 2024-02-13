@@ -126,9 +126,8 @@ Route::delete('/delete/{id}', [UserController::class, 'deleteUser']);
 
 Route::get('/deletedUsers', [UserController::class, 'showDeletedUsers']);
 
-//Route::get('/deletedUser', function () {
-//    return view('admin.deletedUsers');
-//});
+Route::post('/restore/{id}', [UserController::class, 'restoreUser']);
+
 
 Route::get('/templates', function () {
     return view('admin.templates');
