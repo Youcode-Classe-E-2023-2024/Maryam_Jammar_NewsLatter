@@ -97,7 +97,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 });
 
 
-Route::group(['middleware' => ['auth', 'role:admin']], function () {
+Route::group(['middleware' => ['auth', 'role:editor']], function () {
     Route::get('/redacteur', function () {
         return view('redacteur.dashboard');
     })->middleware('auth');
