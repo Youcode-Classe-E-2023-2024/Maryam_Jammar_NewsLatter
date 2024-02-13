@@ -124,6 +124,11 @@ Route::get('/allusers', [UserController::class, 'show']);
 Route::post('/allusers/{id}', [UserController::class, 'update']);
 Route::delete('/delete/{id}', [UserController::class, 'deleteUser']);
 
+Route::get('/deletedUsers', [UserController::class, 'showDeletedUsers']);
+
+//Route::get('/deletedUser', function () {
+//    return view('admin.deletedUsers');
+//});
 
 Route::get('/templates', function () {
     return view('admin.templates');

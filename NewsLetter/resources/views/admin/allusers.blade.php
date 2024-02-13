@@ -16,10 +16,12 @@
                     <div class="flex items-center justify-between">
 
                         <div class="lg:ml-40 ml-10 space-x-8">
-                            <button
+                            <a
+                                type="submit"
+                                href="/deletedUsers"
                                 class="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
                                 Show deleted users
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

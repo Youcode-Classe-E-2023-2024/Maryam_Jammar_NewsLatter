@@ -42,6 +42,12 @@ class UserController extends Controller
         return view('admin.allusers', compact('users', 'roles'));
     }
 
+    public function showDeletedUsers()
+    {
+        $users = User::onlyTrashed()->get();
+
+        return view('admin.deletedUsers', compact('users'));
+    }
 
     /**
      * Update the specified resource in storage.
