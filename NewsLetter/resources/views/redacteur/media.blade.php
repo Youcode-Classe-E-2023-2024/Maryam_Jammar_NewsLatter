@@ -5,13 +5,13 @@
 
     <div class="mx-auto w-full relative flex min-h-screen flex-col justify-center overflow-hidden py-6 sm:py-12">
         <div class="flex justify-end w-26">
-            <button
+            <a href="/upload" type="submit"
                 class="m-4 bg-gray-200 hover:bg-grey text-grey-darkest font-bold py-2 px-4 rounded inline-flex items-center">
                 <svg class="w-4 h-4 mr-2 transform rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                     <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/>
                 </svg>
                 <span>Upload more..</span>
-            </button>
+            </a>
         </div>
 
         <div class="max-w-screen-md mx-auto">
@@ -21,6 +21,7 @@
                         <div class="group pb-24 relative overflow-hidden">
                             <div
                                 class="group-hover:translate-y-0 transition-all duration-700 translate-y-full top-0 right-0 bottom-24 left-0 absolute bg-gradient-to-b from-transparent to-orange-600 z-10"></div>
+
                             <img src="{{ $mediaItem->getUrl() }}" alt="{{ $mediaItem->name }}"
                                  class="transition-all group-hover:scale-125 duration-700 mr-4 h-60 w-auto"/>
                             {{--                            @if($mediaItem->type == 'image')--}}
