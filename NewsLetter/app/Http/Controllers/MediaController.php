@@ -73,12 +73,8 @@ class MediaController extends Controller
      */
     public function destroy($id)
     {
-        // Find the media by its ID
         $media = Medias::find($id);
 
-        if (!$media) {
-            return redirect()->back()->with('error', 'Media not found.');
-        }
         $media->delete();
 
         return redirect()->back()->with('success', 'Media deleted successfully.');
