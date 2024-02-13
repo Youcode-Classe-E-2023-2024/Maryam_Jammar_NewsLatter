@@ -20,7 +20,17 @@
                         <div class="group pb-24 relative overflow-hidden">
                             <div class="group-hover:translate-y-0 transition-all duration-700 translate-y-full top-0 right-0 bottom-24 left-0 absolute bg-gradient-to-b from-transparent to-orange-600 z-10"></div>
                             <img src="{{ $mediaItem->getUrl() }}" alt="{{ $mediaItem->name }}" class="transition-all group-hover:scale-125 duration-700 mr-4 h-60 w-auto"/>
-
+{{--                            @if($mediaItem->type == 'image')--}}
+{{--                                <img src="{{ $mediaItem->getUrl() }}" alt="{{ $mediaItem->name }}"/>--}}
+{{--                            @elseif($mediaItem->type == 'pdf')--}}
+{{--                                <img src="R.png" alt="">--}}
+{{--                                <a href="{{ $mediaItem->getUrl() }}" class="pdf-view-link">Download PDF</a>--}}
+{{--                            @elseif($mediaItem->type == 'video')--}}
+{{--                                <video class="video" height="600" controls>--}}
+{{--                                    <source  src="{{ $mediaItem->getUrl() }}" type="video/mp4">--}}
+{{--                                    Your browser does not support the video tag.--}}
+{{--                                </video>--}}
+{{--                            @endif--}}
                             <div class="bg-orange-600 absolute z-10 bottom-0 left-0 w-full h-24 flex flex-col justify-center items-center">
                                 <div class="z-20 absolute -top-5 w-full flex justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -36,9 +46,10 @@
                                 <div class="group-hover:hidden transition-all duration-1000 w-4 absolute overflow-hidden inline-block right-0 -top-6">
                                     <div class="h-6 bg-orange-900 -rotate-45 transform origin-bottom-right"></div>
                                 </div>
-                                <h2 class="font-bold">{{ $mediaItem->file_name }}</h2>
+                                <h2 class="font-bold pt-6">{{ $mediaItem->name }}</h2>
                                 <span class="text-black">{{ $mediaItem->mime_type }}</span>
-                                <span class="text-black">Created by: {{ $media->user_id }}</span>
+                                <span class="text-black">Created by: {{ $user[$media->user_id] }}</span>
+{{--                                <p class="text-base text-gray-400 font-normal">{{ $user[$media->user_id] }}</p>--}}
                             </div>
                         </div>
                     @endforeach

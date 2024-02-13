@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Medias;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +22,7 @@ class MediaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function upload(Request $request)
@@ -41,20 +42,22 @@ class MediaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Media  $media
+     * @param \App\Models\Media $media
      * @return \Illuminate\Http\Response
      */
     public function show()
     {
         $medias = Medias::all();
-        return view('redacteur.media', compact('medias'));
+        $user = User::pluck('name', 'id');
+
+        return view('redacteur.media', compact('medias', 'user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Media  $media
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Media $media
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Media $media)
@@ -65,7 +68,7 @@ class MediaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Media  $media
+     * @param \App\Models\Media $media
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
