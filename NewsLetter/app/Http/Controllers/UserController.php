@@ -70,13 +70,29 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+//    public function destroy($id)
+//    {
+//        $user = User::find($id);
+////        $user->delete();
+//
+////        return view('admin.allusers', compact('user'));
+//        return redirect()->route('allusers')->with('delete', 'User supprimé avec succès.');
+//
+//    }
+
+    public function deleteUser($id)
     {
         $user = User::find($id);
-//        $user->delete();
-
-//        return view('admin.allusers', compact('user'));
-        return redirect()->route('allusers')->with('delete', 'User supprimé avec succès.');
+        $user->delete();
+        return redirect()->back()->with('success', 'User deleted successfully!');
 
     }
+
+//    public function restorePost($id)
+//    {
+//        $user = User::withTrashed()->find($id);
+//        $user->restore();
+//        return redirect()->back()->with('success', 'User restored successfully!');
+//
+//    }
 }

@@ -122,7 +122,7 @@ Route::get('/allusers', function () {
 });
 Route::get('/allusers', [UserController::class, 'show']);
 Route::post('/allusers/{id}', [UserController::class, 'update']);
-Route::post('/destroy/{id}', [UserController::class, 'destroy']);
+Route::delete('/delete/{id}', [UserController::class, 'deleteUser']);
 
 
 Route::get('/templates', function () {

@@ -81,8 +81,8 @@
                                                     @endforeach
                                                 </span>
                                         </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            <p class="flex justify-around text-gray-900 whitespace-no-wrap">
+                                        <td class="flex justify-around items-center px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <p class="py-1 flex justify-around text-center items-center justify-center text-gray-900 whitespace-no-wrap">
                                                 {{--                                                <a href="/editRole" class="underline">--}}
                                                 {{--                                                    Edit Role--}}
                                                 {{--                                                </a>--}}
@@ -92,14 +92,14 @@
                                                         type="button">
                                                     Edit role
                                                 </button>
-                                                /
+
                                             {{--                                                    <button  type="button" class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">--}}
                                             {{--                                                        Delete user--}}
                                             {{--                                                    </button>--}}
-                                            <form  action="{{ url('/destroy', $user->id )}}" method="post">
+                                            <form  action="{{ url('/delete', $user->id )}}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <button  type="submit" class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                                                <button  type="submit" class="mt-3 block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
                                                     Delete user
                                                 </button>
                                             </form>
