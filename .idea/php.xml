@@ -1,33 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+  <component name="MessDetectorOptionsConfiguration">
+    <option name="transferred" value="true" />
   </component>
-  <component name="ChangeListManager">
-    <list default="true" id="322c0ccc-accd-4499-aaa3-b8abec0f2a0c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Maryam_Jammar_NewsLatter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Maryam_Jammar_NewsLatter.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsLetter/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/NewsLetter/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsLetter/database/migrations/2024_02_08_190143_create_role_user_table.php" beforeDir="false" />
-    </list>
-    <option name="SHOW_DIALOG" value="false" />
-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
-    <option name="LAST_RESOLUTION" value="IGNORE" />
+  <component name="PHPCSFixerOptionsConfiguration">
+    <option name="transferred" value="true" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
-    <pharConfigPath>$PROJECT_DIR$/NewsLetter/composer.json</pharConfigPath>
-    <execution>
-      <executable path="composer" />
-    </execution>
+  <component name="PHPCodeSnifferOptionsConfiguration">
+    <option name="highlightLevel" value="WARNING" />
+    <option name="transferred" value="true" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe">
+  <component name="PhpIncludePathManager">
     <include_path>
       <path value="$PROJECT_DIR$/NewsLetter/vendor/theseer/tokenizer" />
       <path value="$PROJECT_DIR$/NewsLetter/vendor/symfony/yaml" />
@@ -154,67 +137,16 @@
       <path value="$PROJECT_DIR$/NewsLetter/vendor/maennchen/zipstream-php" />
     </include_path>
   </component>
-  <component name="ProjectId" id="2bxB5Wi7k9hm14141yS63TkR9G2" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
+  <component name="PhpStanOptionsConfiguration">
+    <option name="transferred" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/laravel/Maryam_Jammar_NewsLatter&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\laravel\Maryam_Jammar_NewsLatter\NewsLetter\resources\views" />
-    </key>
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/NewsLetter/phpunit.xml" custom_loader_path="$PROJECT_DIR$/NewsLetter/vendor/autoload.php" use_configuration_file="true" />
+    </phpunit_settings>
   </component>
-  <component name="RunManager">
-    <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner scope="XML" />
-      <method v="2" />
-    </configuration>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="322c0ccc-accd-4499-aaa3-b8abec0f2a0c" name="Changes" comment="" />
-      <created>1707146666278</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1707146666278</updated>
-      <workItem from="1707146667605" duration="17057000" />
-      <workItem from="1707264259201" duration="36000" />
-      <workItem from="1707900122650" duration="354000" />
-      <workItem from="1707901307357" duration="1320000" />
-      <workItem from="1707902684478" duration="533000" />
-      <workItem from="1707903235585" duration="669000" />
-      <workItem from="1707909057015" duration="2313000" />
-    </task>
-    <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/NewsLetter/resources/views/welcome.blade.php</url>
-          <line>131</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="PsalmOptionsConfiguration">
+    <option name="transferred" value="true" />
   </component>
 </project>
