@@ -37,7 +37,8 @@
                                     </a>
                                 </h3>
                                 <p class="text-base text-body-color leading-relaxed mb-7">
-                                    {{$template->content}}
+                                    {{$content = substr($template->content, 1, 55)}}
+
                                 </p>
                                 <a
                                     href="javascript:void(0)"
