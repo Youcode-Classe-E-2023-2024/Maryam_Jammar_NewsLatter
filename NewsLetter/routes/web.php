@@ -4,7 +4,6 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\NewsLetterController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Authenticate;
-use App\Models\Media;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
