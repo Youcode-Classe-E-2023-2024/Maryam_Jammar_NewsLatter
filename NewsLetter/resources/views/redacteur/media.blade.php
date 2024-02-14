@@ -21,9 +21,14 @@
                         <div class="group pb-24 relative overflow-hidden">
                             <div
                                 class="group-hover:translate-y-0 transition-all duration-700 translate-y-full top-0 right-0 bottom-24 left-0 absolute bg-gradient-to-b from-transparent to-orange-600 z-10"></div>
-
-                            <img src="{{ $mediaItem->getUrl() }}" alt="{{ $mediaItem->name }}"
+                            {{--<img src="{{ asset('storage/' . "$mediaItem->id/" . $mediaItem->file_name) }}" alt="Media Image">--}}
+                            @if(str_contains($mediaItem['mime_type'], "video"))
+                            <img src="https://img.freepik.com/free-vector/video-media-player-design_114579-839.jpg?t=st=1707920195~exp=1707920795~hmac=4344a5fa2c4d08a38446d0d47db0e2c16ecadc3fabf0e5c9fa52e5b9cd509df6" alt="{{ $mediaItem->name }}"
                                  class="transition-all group-hover:scale-125 duration-700 mr-4 h-60 w-auto"/>
+                            @else
+                            <img src="{{ asset('storage/' . "$mediaItem->id/" . $mediaItem->file_name) }}" alt="{{ $mediaItem->name }}"
+                                 class="transition-all group-hover:scale-125 duration-700 mr-4 h-60 w-auto"/>
+                            @endif
                             {{--                            @if($mediaItem->type == 'image')--}}
                             {{--                                <img src="{{ $mediaItem->getUrl() }}" alt="{{ $mediaItem->name }}"/>--}}
                             {{--                            @elseif($mediaItem->type == 'pdf')--}}
@@ -58,9 +63,9 @@
                                     class="group-hover:hidden transition-all duration-1000 w-4 absolute overflow-hidden inline-block right-0 -top-6">
                                     <div class="h-6 bg-orange-900 -rotate-45 transform origin-bottom-right"></div>
                                 </div>
-                                <h2 class="font-bold pt-6">{{ $mediaItem->name }}</h2>
+                                <h2 class="font-bold pt-12">{{ $mediaItem->name }}</h2>
                                 <span class="text-black">{{ $mediaItem->mime_type }}</span>
-                                <span class="text-black">Created by: {{ $user[$media->user_id] }}</span>
+                                <span class="text-black mb-6">Created by: {{ $user[$media->user_id] }}</span>
                                 {{--                                <p class="text-base text-gray-400 font-normal">{{ $user[$media->user_id] }}</p>--}}
                             </div>
                         </div>

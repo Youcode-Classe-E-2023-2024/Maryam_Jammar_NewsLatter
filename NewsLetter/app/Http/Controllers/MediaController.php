@@ -36,7 +36,7 @@ class MediaController extends Controller
         $media->addMediaFromRequest('image')
             ->toMediaCollection();
 
-        return back()->with('success', 'Files uploaded successfully!');
+        return redirect('all-media')->with('success', 'Files uploaded successfully!');
     }
 
     /**
