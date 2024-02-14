@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class NewsLetter extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'content', 'creator'];
+    protected $fillable = ['title', 'content', 'creator', 'status'];
 }

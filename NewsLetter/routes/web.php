@@ -56,10 +56,9 @@ Route::post('/forgot-password', [ForgotPasswordController::class, 'reset'])->nam
 Route::get('/test', function () {
     return view('test');
 
-})->middleware('auth');
+});
 
 
-//redacteur
 
 
 
@@ -71,7 +70,12 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         return view('admin.dashboard');
     });
 
+    Route::get('/members', function () {
+        return view('admin.subscribers');
+    });
+
     Route::get('/members', [NewsLetterController::class, 'show']);
+
 
     Route::get('/allusers', function () {
         return view('admin.allusers');
@@ -96,6 +100,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 });
 
 
+//editor
 Route::group(['middleware' => ['auth', 'role:editor']], function () {
     Route::get('/redacteur', function () {
         return view('redacteur.dashboard');
@@ -121,6 +126,9 @@ Route::group(['middleware' => ['auth', 'role:editor']], function () {
     });
 
     Route::get('/subscribers', [NewsLetterController::class, 'showS']);
+
+    Route::post('/createTemplate', [NewsLetterController::class, 'store']);
+
 
 });
 

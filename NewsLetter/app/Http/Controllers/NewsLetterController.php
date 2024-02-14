@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Member;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 use App\Events\UserSubscribed;
@@ -31,17 +32,6 @@ class NewsLetterController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param \App\Models\NewsLetter $newsLetter
@@ -66,6 +56,31 @@ class NewsLetterController extends Controller
         return view('redacteur.subscribers', compact('subscribers', 'unsubscribers'));
 
     }
+
+    /////////************************************************///////////////
+    ///                         Templates
+    /// ////////////////////////////////////////////////////////////////////
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $user = Auth::id();
+        $data = $request->validate([
+            'title' => 'required',
+            'content' => 'required'
+        ]);
+        $data['creator'] = $user;
+
+        NewsLetter::create($data);
+
+        return redirect('templates');
+    }
+
 
     /**
      * Update the specified resource in storage.

@@ -6,17 +6,14 @@
     <!-- component -->
     <div class="py-12 mx-auto">
         <div class="w-full max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <form method="POST" action="action.php">
+            <div class="bg-white overflow-hidden shadow-lg sm:rounded-lg">
+                <div class="p-6 bg-white rounded-lg border-b border-gray-200">
+                    <h3 class="font-medium text-lg text-center mb-4">Create a template</h3>
+                    <form method="POST" action="/createTemplate">
+                        @csrf
                         <div class="mb-4">
                             <label class="text-xl text-gray-600">Title <span class="text-red-500">*</span></label></br>
                             <input type="text" class="border-2 border-gray-300 p-2 w-full" name="title" id="title" value="" required>
-                        </div>
-
-                        <div class="mb-4">
-                            <label class="text-xl text-gray-600">Description</label></br>
-                            <input type="text" class="border-2 border-gray-300 p-2 w-full" name="description" id="description" placeholder="(Optional)">
                         </div>
 
                         <div class="mb-8">
@@ -26,12 +23,16 @@
                             </textarea>
                         </div>
 
-                        <div class="flex p-1">
-                            <select class="border-2 border-gray-300 border-r p-2" name="action">
-                                <option>Save and Publish</option>
-                                <option>Save Draft</option>
-                            </select>
-                            <button role="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400" required>Submit</button>
+                        <div class="flex justify-between p-1">
+                            <div>
+                                <select class="border-2 border-gray-300 border-r p-2" name="status">
+                                    <option value="published">Save and Publish</option>
+                                    <option value="unpublished">Save Draft</option>
+                                </select>
+                                <button type="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400" required>Submit</button>
+                            </div>
+
+                            <input type="file">
                         </div>
                     </form>
                 </div>
