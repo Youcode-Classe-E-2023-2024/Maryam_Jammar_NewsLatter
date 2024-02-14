@@ -105,8 +105,12 @@ class NewsLetterController extends Controller
      * @param \App\Models\NewsLetter $newsLetter
      * @return \Illuminate\Http\Response
      */
-    public function destroy(NewsLetter $newsLetter)
+    public function deleteTemplate($id)
     {
-        //
+        $templateId = NewsLetter::find($id);
+
+        $templateId->delete();
+
+        return redirect('templates');
     }
 }

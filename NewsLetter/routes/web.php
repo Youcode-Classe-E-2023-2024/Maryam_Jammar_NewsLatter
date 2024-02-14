@@ -129,6 +129,7 @@ Route::group(['middleware' => ['auth', 'role:editor']], function () {
 
     Route::post('/createTemplate', [NewsLetterController::class, 'store']);
     Route::get('/templates', [NewsLetterController::class, 'showTemplate']);
+    Route::post('/deleteTemplate/{id}', [NewsLetterController::class, 'deleteTemplate']);
 
 
 });

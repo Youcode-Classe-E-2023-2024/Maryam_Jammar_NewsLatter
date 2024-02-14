@@ -9,18 +9,18 @@
         <div class="container">
             <div class="flex flex-wrap gap-8 -mx-4">
                 @foreach($templates as $template)
-                    <div class="w-full md:w-1/2 xl:w-1/3 px-4 shadow-xl rounded-lg">
-                        <div class="bg-white rounded-lg overflow-hidden mb-10">
-                            <img
-                                src="https://cdn.tailgrids.com/1.0/assets/images/cards/card-01/image-01.jpg"
-                                alt="image"
-                                class="w-full"
-                            />
-                            <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
-                                <h3>
-                                    <a
-                                        href="javascript:void(0)"
-                                        class="
+                        <div class="absolute w-full md:w-1/2 xl:w-1/3 px-4 shadow-xl rounded-lg">
+                            <div class=" bg-white rounded-lg overflow-hidden mb-10">
+                                <img
+                                    src="https://cdn.tailgrids.com/1.0/assets/images/cards/card-01/image-01.jpg"
+                                    alt="image"
+                                    class="w-full"
+                                />
+                                <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
+                                    <h3>
+                                        <a
+                                            href="javascript:void(0)"
+                                            class="
                             font-semibold
                             text-dark text-xl
                             sm:text-[22px]
@@ -32,17 +32,18 @@
                             block
                             hover:text-primary
                             "
-                                    >
-                                        {{$template->title}}
-                                    </a>
-                                </h3>
-                                <p class="text-base text-body-color leading-relaxed mb-7">
-                                    {{$content = substr($template->content, 1, 55)}}
+                                        >
+                                            {{$template->title}}
+                                        </a>
+                                    </h3>
+                                    <p class="text-base text-body-color leading-relaxed mb-7">
+                                        {{$content = substr($template->content, 1, 40)}}
 
-                                </p>
-                                <a
-                                    href="javascript:void(0)"
-                                    class="
+                                    </p>
+                                    <div>
+                                        <a
+                                            href="/editTemplate"
+                                            class="
                          inline-block
                          py-2
                          px-7
@@ -53,12 +54,53 @@
                          hover:border-primary hover:bg-primary hover:text-white
                          transition
                          "
-                                >
-                                    View Details
-                                </a>
+                                        >
+                                            Edit
+                                        </a>
+                                        <form action="/deleteTemplate/{{$template->id}}" method="post">
+                                            @csrf
+                                            <button type="submit"
+
+                                                class="
+                         inline-block
+                         py-2
+                         px-7
+                         border border-[#E5E7EB]
+                         rounded-full
+                         text-base text-body-color
+                         font-medium
+                         hover:border-primary hover:bg-primary hover:text-white
+                         transition
+                         "
+                                            >
+                                                Delete
+                                            </button>
+                                        </form>
+
+
+                                        <a
+                                            href="javascript:void(0)"
+                                            class="
+                         inline-block
+                         py-2
+                         px-7
+                         border border-[#E5E7EB]
+                         rounded-full
+                         text-base text-body-color
+                         font-medium
+                         hover:border-primary hover:bg-primary hover:text-white
+                         transition
+                         "
+                                        >
+                                            Publish
+                                        </a>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+
+
                 @endforeach
             </div>
 
