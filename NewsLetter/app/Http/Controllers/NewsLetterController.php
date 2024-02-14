@@ -81,6 +81,11 @@ class NewsLetterController extends Controller
         return redirect('templates');
     }
 
+    public function showTemplate(){
+        $templates = NewsLetter::all();
+
+        return view('redacteur.templates', compact('templates'));
+    }
 
     /**
      * Update the specified resource in storage.

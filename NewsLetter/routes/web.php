@@ -128,6 +128,7 @@ Route::group(['middleware' => ['auth', 'role:editor']], function () {
     Route::get('/subscribers', [NewsLetterController::class, 'showS']);
 
     Route::post('/createTemplate', [NewsLetterController::class, 'store']);
+    Route::get('/templates', [NewsLetterController::class, 'showTemplate']);
 
 
 });
