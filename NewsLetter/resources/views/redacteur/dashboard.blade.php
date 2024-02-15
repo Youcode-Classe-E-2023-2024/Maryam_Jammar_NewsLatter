@@ -12,7 +12,7 @@
 
                 </div>
                 <div class="flex justify-center mb-6">
-                    <img src="https://unsplash.it/64/64" alt="Profile"
+                    <img src="{{ Auth::user()->picture }}" alt="Profile"
                          class="rounded-full border-2 border-blue-700 p-1">
                 </div>
                 <div class="text-center mb-4">
