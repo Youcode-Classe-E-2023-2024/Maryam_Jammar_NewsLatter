@@ -88,6 +88,12 @@ class NewsLetterController extends Controller
         return view('redacteur.templates', compact('templates'));
     }
 
+    public function showAllTemplate(){
+        $templates = NewsLetter::paginate(3);
+
+        return view('admin.templates', compact('templates'));
+    }
+
     /**
      * Update the specified resource in storage.
      *

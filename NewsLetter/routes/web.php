@@ -84,7 +84,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/deletedUsers', [UserController::class, 'showDeletedUsers']);
 
     Route::post('/restore/{id}', [UserController::class, 'restoreUser']);
-    
+
+    Route::get('/allTemplates', [NewsLetterController::class, 'showAllTemplate']);
+
     Route::get('/media', [MediaController::class, 'showMedia']);
 
 });
