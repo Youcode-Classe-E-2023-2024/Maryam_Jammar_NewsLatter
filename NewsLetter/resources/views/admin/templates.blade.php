@@ -33,62 +33,6 @@
                                             {{$content = substr($template->content, 1, 40)}}
 
                                         </p>
-                                        <div class="flex items-center justify-around">
-                                            <a href="/editTemplate/{{$template->id}}"
-
-                                               class="
-                         inline-block
-                         py-2
-                         px-7
-                         border border-[#E5E7EB]
-                         rounded-full
-                         text-base text-body-color
-                         font-medium
-                         hover:border-primary hover:bg-primary hover:text-white
-                         transition
-                         "
-                                            >
-                                                Edit
-                                            </a>
-                                            <form action="/deleteTemplate/{{$template->id}}" method="post">
-                                                @csrf
-                                                <button type="submit"
-
-                                                        class="
-                         inline-block
-                         py-2
-                         px-7
-                         border border-[#E5E7EB]
-                         rounded-full
-                         text-base text-body-color
-                         font-medium
-                         hover:border-primary hover:bg-primary hover:text-white
-                         transition mt-4
-                         "
-                                                >
-                                                    Delete
-                                                </button>
-                                            </form>
-
-
-                                            <a
-                                                href="javascript:void(0)"
-                                                class="
-                         inline-block
-                         py-2
-                         px-7
-                         border border-[#E5E7EB]
-                         rounded-full
-                         text-base text-body-color
-                         font-medium
-                         hover:border-primary hover:bg-primary hover:text-white
-                         transition
-                         "
-                                            >
-                                                Publish
-                                            </a>
-
-                                        </div>
                                         <div>
                                             Status: {{$template->status}}
                                         </div>
