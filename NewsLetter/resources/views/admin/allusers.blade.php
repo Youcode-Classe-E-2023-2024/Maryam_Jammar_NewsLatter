@@ -78,9 +78,9 @@
                                                     class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                                     <span aria-hidden
                                                           class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                                            @foreach($user->roles as $role)
-                                                        <span class="relative">{{ $role->name }}</span>
-                                                    @endforeach
+                                                                @foreach($user->roles as $role)
+                                                            <span class="relative">{{ $role->name }}</span>
+                                                        @endforeach
                                                 </span>
                                         </td>
                                         <td class="flex justify-around items-center px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -98,10 +98,11 @@
                                             {{--                                                    <button  type="button" class="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">--}}
                                             {{--                                                        Delete user--}}
                                             {{--                                                    </button>--}}
-                                            <form  action="{{ url('/delete', $user->id )}}" method="post">
+                                            <form action="{{ url('/delete', $user->id )}}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <button  type="submit" class="mt-3 block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                                                <button type="submit"
+                                                        class="mt-3 block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
                                                     Delete user
                                                 </button>
                                             </form>
