@@ -4,8 +4,12 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\NewsLetterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PDFController;
+
 use App\Http\Middleware\Authenticate;
+use App\Mail\TemplateMail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\RegisterController;
@@ -87,6 +91,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
     Route::get('/media', [MediaController::class, 'showMedia']);
 
+    Route::get('/generate-pdf', [PDFController::class, 'generatePDF'])->name('generate.pdf');
+
+
 });
 
 
@@ -125,6 +132,10 @@ Route::group(['middleware' => ['auth', 'role:editor']], function () {
 
     Route::post('/deleteTemplate/{id}', [NewsLetterController::class, 'deleteTemplate']);
 
+    Route::get('/', function () {
+        Mail::to('maryamjammar1509@gmail.com')
+            ->send(new TemplateMail());
+    });
 
 });
 

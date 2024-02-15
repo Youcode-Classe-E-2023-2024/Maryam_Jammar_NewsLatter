@@ -111,6 +111,11 @@
                 </div>
             </div>
         </main>
+        <div class=" inset-y-0 right-0 space-x-8">
+            <a href="{{ route('generate.pdf') }}" class="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
+                Generate PDF
+            </a>
+        </div>
         <p class="text-center text-sm text-gray-500 my-10">
             &copy;<?php echo date("Y"); ?>. All rights
             reserved.
