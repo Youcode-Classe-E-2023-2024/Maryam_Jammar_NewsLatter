@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use App\Models\NewsLetter;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,11 @@ class DashboardController extends Controller
         $totalTemplates = NewsLetter::all()->count();
         $totalSubscribers = Member::all()->count();
 
-        return view('admin.dashboard', compact('totalUsers', 'totalTemplates', 'totalSubscribers'));
+        $latestUsers = User::with('roles')->latest()->take(5)->get();
+        $roles = Role::all();
+
+        $latestTemplates = NewsLetter::latest()->take(6)->get();
+        return view('admin.dashboard', compact('totalUsers', 'totalTemplates', 'totalSubscribers', 'latestUsers', 'roles', 'latestTemplates'));
     }
 
     /**
