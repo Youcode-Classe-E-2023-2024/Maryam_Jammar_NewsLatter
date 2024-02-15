@@ -70,9 +70,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         return view('admin.dashboard');
     });
 
-    Route::get('/members', function () {
-        return view('admin.subscribers');
-    });
 
     Route::get('/members', [NewsLetterController::class, 'show']);
 
@@ -87,15 +84,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/deletedUsers', [UserController::class, 'showDeletedUsers']);
 
     Route::post('/restore/{id}', [UserController::class, 'restoreUser']);
-
-
-    Route::get('/templates', function () {
-        return view('admin.templates');
-    });
-
-    Route::get('/media', function () {
-        return view('admin.media');
-    });
+    
+    Route::get('/media', [MediaController::class, 'showMedia']);
 
 });
 
@@ -121,9 +111,7 @@ Route::group(['middleware' => ['auth', 'role:editor']], function () {
 
     Route::post('/deleteMedia/{id}', [MediaController::class, 'destroy']);
 
-    Route::get('/members', function () {
-        return view('redacteur.subscribers');
-    });
+
 
     Route::get('/subscribers', [NewsLetterController::class, 'showS']);
 

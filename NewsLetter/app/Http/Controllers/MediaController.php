@@ -53,6 +53,14 @@ class MediaController extends Controller
         return view('redacteur.media', compact('medias', 'user'));
     }
 
+    public function showMedia()
+    {
+        $medias = Medias::all();
+        $user = User::pluck('name', 'id');
+
+        return view('admin.media', compact('medias', 'user'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
