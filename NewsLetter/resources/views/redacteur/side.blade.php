@@ -122,56 +122,10 @@
                         href="#"
                         class="inline-block text-xl font-bold tracking-wider text-indigo-700 uppercase dark:text-light"
                     >
-                        K-WD
+                        N-LT
                     </a>
                 </div>
                 <div class="flex flex-col items-center justify-center flex-1 space-y-4">
-                    <!-- Notification button -->
-                    <button
-                        @click="openNotificationsPanel"
-                        class="p-2 text-indigo-400 transition-colors duration-200 rounded-full bg-indigo-50 hover:text-indigo-600 hover:bg-indigo-100 dark:hover:text-light dark:hover:bg-indigo-700 dark:bg-dark focus:outline-none focus:bg-indigo-100 dark:focus:bg-indigo-700 focus:ring-indigo-800"
-                    >
-                        <span class="sr-only">Open Notification panel</span>
-                        <svg
-                            class="w-7 h-7"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            aria-hidden="true"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                            />
-                        </svg>
-                    </button>
-
-                    <!-- Search button -->
-                    <button
-                        @click="openSearchPanel"
-                        class="p-2 text-indigo-400 transition-colors duration-200 rounded-full bg-indigo-50 hover:text-indigo-600 hover:bg-indigo-100 dark:hover:text-light dark:hover:bg-indigo-700 dark:bg-dark focus:outline-none focus:bg-indigo-100 dark:focus:bg-indigo-700 focus:ring-indigo-800"
-                    >
-                        <span class="sr-only">Open search panel</span>
-                        <svg
-                            class="w-7 h-7"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            aria-hidden="true"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                            />
-                        </svg>
-                    </button>
-
                     <!-- Settings button -->
                     <button
                         @click="openSettingsPanel"
@@ -215,7 +169,7 @@
                             <span class="sr-only">User menu</span>
                             <img
                                 class="w-10 h-10 rounded-full"
-                                src="https://avatars.githubusercontent.com/u/57622665?s=460&u=8f581f4c4acd4c18c33a87b3e6476112325e8b38&v=4"
+                                src="{{ Auth::user()->picture }}"
                                 alt="Ahmed Kamel"
                             />
                         </button>
@@ -232,7 +186,7 @@
                             x-transition:leave-end="-translate-y-1/2 opacity-0"
                             @click.away="open = false"
                             @keydown.escape="open = false"
-                            class="absolute w-56 py-1 mb-4 bg-white rounded-md shadow-lg min-w-max left-5 bottom-full ring-1 ring-black ring-opacity-5 dark:bg-dark focus:outline-none"
+                            class="absolute py-1 mb-4 bg-white rounded-md shadow-lg min-w-max left-5 bottom-full ring-1 ring-black ring-opacity-5 dark:bg-dark focus:outline-none"
                             tabindex="-1"
                             role="menu"
                             aria-orientation="vertical"
@@ -246,18 +200,13 @@
                                 Your Profile
                             </a>
                             <a
-                                href="#"
                                 role="menuitem"
                                 class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-indigo-600"
                             >
-                                Settings
-                            </a>
-                            <a
-                                href="#"
-                                role="menuitem"
-                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-indigo-600"
-                            >
-                                Logout
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit">Logout</button>
+                                </form>
                             </a>
                         </div>
                     </div>
