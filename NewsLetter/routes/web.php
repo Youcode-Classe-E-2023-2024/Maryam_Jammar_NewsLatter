@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\NewsLetterController;
 use App\Http\Controllers\UserController;
@@ -66,17 +67,14 @@ Route::get('/test', function () {
 //Admin
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    });
+
+    Route::get('/dashboard', [DashboardController::class, 'total']);
 
 
     Route::get('/members', [NewsLetterController::class, 'show']);
 
 
-    Route::get('/allusers', function () {
-        return view('admin.allusers');
-    });
+
     Route::get('/allusers', [UserController::class, 'show']);
     Route::post('/allusers/{id}', [UserController::class, 'update']);
     Route::delete('/delete/{id}', [UserController::class, 'deleteUser']);
@@ -97,9 +95,10 @@ Route::group(['middleware' => ['auth', 'role:editor']], function () {
     Route::get('/redacteur', function () {
         return view('redacteur.dashboard');
     });
-    Route::get('/create', function () {
-        return view('redacteur.createTemplate');
-    });
+
+
+    Route::get('/create', [NewsLetterController::class, 'create']);
+
     Route::get('/templates', function () {
         return view('redacteur.templates');
     });
