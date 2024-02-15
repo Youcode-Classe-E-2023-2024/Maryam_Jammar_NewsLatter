@@ -7,20 +7,17 @@
     <!-- ====== Cards Section Start -->
     <section class="p-6 pt-20 lg:pt-[120px] pb-10 lg:pb-20 bg-[#F3F4F6]">
         <div class="container">
-            <div class="flex flex-wrap gap-8 -mx-4">
+            <div class="flex flex-wrap mx-auto  -mx-4">
                 @foreach($templates as $template)
-                    <div class="absolute w-full md:w-1/2 xl:w-1/3 px-4 shadow-xl rounded-lg">
-                        <div class=" bg-white rounded-lg overflow-hidden mb-10">
+                    <div class="w-full py-1 md:w-1/2 xl:w-1/3 shadow-md rounded-lg mb-6">
+                        <div class="px-3 bg-white rounded-lg overflow-hidden ">
                             <img
                                 src="https://cdn.tailgrids.com/1.0/assets/images/cards/card-01/image-01.jpg"
                                 alt="image"
                                 class="w-full"
                             />
-                            <div class="p-8 sm:p-9 md:p-7 xl:p-9 text-center">
-                                <h3>
-                                    <a
-                                        href="javascript:void(0)"
-                                        class="
+                            <div class=" sm:p-9 md:p-7 xl:p-9 text-center">
+                                <h3 class="
                             font-semibold
                             text-dark text-xl
                             sm:text-[22px]
@@ -31,16 +28,14 @@
                             mb-4
                             block
                             hover:text-primary
-                            "
-                                    >
+                            ">
                                         {{$template->title}}
-                                    </a>
                                 </h3>
                                 <p class="text-base text-body-color leading-relaxed mb-7">
                                     {{$content = substr($template->content, 1, 40)}}
 
                                 </p>
-                                <div>
+                                <div class="flex items-center justify-around">
                                     <a href="/editTemplate/{{$template->id}}"
 
                                                 class="
@@ -70,7 +65,7 @@
                          text-base text-body-color
                          font-medium
                          hover:border-primary hover:bg-primary hover:text-white
-                         transition
+                         transition mt-4
                          "
                                         >
                                             Delete
@@ -96,11 +91,17 @@
                                     </a>
 
                                 </div>
+                                <div>
+                                    Status: {{$template->status}}
+                                </div>
                             </div>
                         </div>
                     </div>
 
                 @endforeach
+            </div>
+            <div>
+                {{$templates->links()}}
             </div>
 
         </div>

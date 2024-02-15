@@ -72,7 +72,8 @@ class NewsLetterController extends Controller
         $user = Auth::id();
         $data = $request->validate([
             'title' => 'required',
-            'content' => 'required'
+            'content' => 'required',
+            'status' => 'required'
         ]);
         $data['creator'] = $user;
 
@@ -82,7 +83,7 @@ class NewsLetterController extends Controller
     }
 
     public function showTemplate(){
-        $templates = NewsLetter::all();
+        $templates = NewsLetter::paginate(3);
 
         return view('redacteur.templates', compact('templates'));
     }
@@ -109,11 +110,13 @@ class NewsLetterController extends Controller
 
         $data = $request->validate([
             'title' => 'required',
-            'content' => 'required'
+            'content' => 'required',
+            'status' => 'required'
         ]);
 
         $template->title = $data['title'];
         $template->content = $data['content'];
+        $template->status = $data['status'];
         $template->creator = $user;
 
         $template->save();
