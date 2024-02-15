@@ -94,9 +94,31 @@ class NewsLetterController extends Controller
      * @param \App\Models\NewsLetter $newsLetter
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NewsLetter $newsLetter)
+    public function editTemplate($id)
     {
-        //
+        $template = NewsLetter::find($id);
+
+        return view('redacteur.updateTemplate', compact('template'));
+    }
+
+
+    public function updateTemplate(Request $request, $id)
+    {
+        $user = Auth::id();
+        $template = NewsLetter::findOrFail($id); // Utilisez findOrFail pour gérer les cas où l'ID n'existe pas
+
+        $data = $request->validate([
+            'title' => 'required',
+            'content' => 'required'
+        ]);
+
+        $template->title = $data['title'];
+        $template->content = $data['content'];
+        $template->creator = $user;
+
+        $template->save();
+
+        return redirect('templates')->with('success', 'Template updated successfully');
     }
 
     /**
