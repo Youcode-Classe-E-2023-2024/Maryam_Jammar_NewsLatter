@@ -371,7 +371,7 @@
                 </div>
 
                 <!-- NewsLetter links -->
-                <div x-data="{ isActive: false, open: false}">
+                <div x-data="{ isActive: true, open: true}">
                     <!-- active & hover classes 'bg-indigo-100 dark:bg-indigo-600' -->
                     <a
                         href="#"
