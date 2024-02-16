@@ -2,7 +2,6 @@
 
 <div class="flex ">
     @include('redacteur.side')
-
     <!-- component -->
     <div class="py-12 mx-auto">
         <div class="w-full max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -13,11 +12,13 @@
                         @csrf
                         <div class="mb-4">
                             <label class="text-xl text-gray-600">Title <span class="text-red-500">*</span></label></br>
-                            <input type="text" class="border-2 border-gray-300 p-2 w-full" name="title" id="title" value="" required>
+                            <input type="text" class="border-2 border-gray-300 p-2 w-full" name="title" id="title"
+                                   value="" required>
                         </div>
 
                         <div class="mb-8">
-                            <label class="text-xl text-gray-600">Content <span class="text-red-500">*</span></label></br>
+                            <label class="text-xl text-gray-600">Content <span
+                                    class="text-red-500">*</span></label></br>
                             <textarea name="content" class="border-2 border-gray-500">
 
                             </textarea>
@@ -29,10 +30,21 @@
                                     <option value="published">Save and Publish</option>
                                     <option value="unpublished">Save Draft</option>
                                 </select>
-                                <button type="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400" required>Submit</button>
+                                <button type="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400" required>
+                                    Submit
+                                </button>
                             </div>
-
-                            <input type="file">
+                            <div>
+                                <select class="border-2 border-gray-300 border-r p-2" name="media">
+                                    @foreach($medias as $media)
+                                        @foreach($media['media'] as $image)
+                                            <option value="{{ $image->id }}">
+                                                <img src="{{asset("storage/$image->id/$image->file_name")}}" alt="">
+                                                {{ $image->file_name }}</option>
+                                        @endforeach
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -43,7 +55,7 @@
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
     <script>
-        CKEDITOR.replace( 'content' );
+        CKEDITOR.replace('content');
     </script>
 
 </div>

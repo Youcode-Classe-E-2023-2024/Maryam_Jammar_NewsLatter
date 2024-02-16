@@ -1,13 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Mail\NewsletterEmail;
+use App\Models\Medias;
 use App\Models\Member;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 use App\Events\UserSubscribed;
 use App\Models\NewsLetter;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class NewsLetterController extends Controller
 {
@@ -67,13 +72,21 @@ class NewsLetterController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+
+    public function create()
+    {
+        $medias = Medias::with('media')->get();
+        return view('redacteur.createTemplate', compact('medias'));
+    }
+
     public function store(Request $request)
     {
         $user = Auth::id();
         $data = $request->validate([
             'title' => 'required',
             'content' => 'required',
-            'status' => 'required'
+            'status' => 'required',
+            'media' => 'required'
         ]);
         $data['creator'] = $user;
 
@@ -82,13 +95,15 @@ class NewsLetterController extends Controller
         return redirect('templates');
     }
 
-    public function showTemplate(){
+    public function showTemplate()
+    {
         $templates = NewsLetter::paginate(3);
 
         return view('redacteur.templates', compact('templates'));
     }
 
-    public function showAllTemplate(){
+    public function showAllTemplate()
+    {
         $templates = NewsLetter::paginate(3);
 
         return view('admin.templates', compact('templates'));
@@ -117,12 +132,15 @@ class NewsLetterController extends Controller
         $data = $request->validate([
             'title' => 'required',
             'content' => 'required',
-            'status' => 'required'
+            'status' => 'required',
+            'media' => 'required'
         ]);
 
         $template->title = $data['title'];
         $template->content = $data['content'];
         $template->status = $data['status'];
+        $template->media = $data['media'];
+
         $template->creator = $user;
 
         $template->save();
@@ -143,5 +161,19 @@ class NewsLetterController extends Controller
         $templateId->delete();
 
         return redirect('templates');
+    }
+
+
+    public function sendNewsletter($id)
+    {
+        $subscribers = Member::where('status', 'subscribed')->get();
+
+        $newsletter = NewsLetter::findOrFail($id);
+
+        foreach ($subscribers as $subscriber) {
+            Mail::to($subscriber->email)->send(new NewsletterEmail($newsletter->title, $newsletter->content, $newsletter->media, $subscriber->email));
+        }
+
+        return redirect()->back()->with('success', 'Newsletter sent successfully to all subscribers!');
     }
 }
