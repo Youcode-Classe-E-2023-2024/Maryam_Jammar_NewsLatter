@@ -1,3 +1,5 @@
+![image](https://github.com/Youcode-Classe-E-2023-2024/Maryam_Jammar_NewsLatter/assets/132862036/411ad039-1fd2-464e-86de-cf766fec8f92)
+
 
 # Plateforme de Communication et de Marketing
 
