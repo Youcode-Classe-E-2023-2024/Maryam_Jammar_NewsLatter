@@ -94,6 +94,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
     Route::get('/generate-pdf', [PDFController::class, 'generatePDF'])->name('generate.pdf');
 
+    Route::get('/profile', function (){
+        return view('admin.profile');
+    });
 
 });
 
@@ -159,6 +162,4 @@ Route::post('password/reset', 'App\Http\Controllers\Auth\ResetPasswordController
 Route::post('/subscribe', [NewsLetterController::class, 'subscribe'])->name('subscribe');
 
 
-//Route::get('/profile', function (){
-//    return view('profile.profile');
-//});
+
