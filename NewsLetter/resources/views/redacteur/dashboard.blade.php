@@ -37,7 +37,7 @@
             class="grid rounded-2xl divide-y divide-dashed hover:divide-solid  justify-evenly bg-gray-50 dark:bg-gray-300 m-3 mt-10 grid-cols-3">
             <div class=" col-span-1  p-3">
                 <div class="flex flex-col items-center ">
-                    <a href="">
+                    <a href="/editProfile">
                         <button
                             class="tr-300">
                             <svg xmlns="http://www.w3.org/2000/svg"
