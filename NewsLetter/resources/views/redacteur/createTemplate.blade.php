@@ -40,10 +40,12 @@
                                         @foreach($media['media'] as $image)
                                             <option value="{{ $image->id }}">
                                                 <img src="{{asset("storage/$image->id/$image->file_name")}}" alt="">
-                                                {{ $image->file_name }}</option>
+                                                {{ $image->file_name }}
+                                            </option>
                                         @endforeach
                                     @endforeach
                                 </select>
+
                             </div>
                         </div>
                     </form>

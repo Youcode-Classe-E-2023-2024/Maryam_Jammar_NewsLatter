@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\NewsLetterController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PDFController;
 
@@ -131,13 +132,14 @@ Route::group(['middleware' => ['auth', 'role:editor']], function () {
 
 
     Route::post('/deleteTemplate/{id}', [NewsLetterController::class, 'deleteTemplate']);
-    /***
-     * Route::get('/', function () {
-    Mail::to('maryamjammar1509@gmail.com')
-    ->send(new TemplateMail());
+
+    Route::get('/send/{id}', [NewsLetterController::class, 'sendNewsletter']);
+
+    Route::get('/editProfile', function () {
+        return view('redacteur.editProfile');
     });
 
-     */
+    Route::post('/editProfile/{id}', [ProfileController::class, 'show']);
 
 });
 

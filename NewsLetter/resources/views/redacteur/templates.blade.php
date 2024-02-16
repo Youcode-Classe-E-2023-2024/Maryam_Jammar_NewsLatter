@@ -74,7 +74,7 @@
 
 
                                     <a
-                                        href="javascript:void(0)"
+                                        href="/send/{{$template->id}}"
                                         class="
                          inline-block
                          py-2
