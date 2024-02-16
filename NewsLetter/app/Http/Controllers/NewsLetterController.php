@@ -173,6 +173,8 @@ class NewsLetterController extends Controller
         foreach ($subscribers as $subscriber) {
             Mail::to($subscriber->email)->send(new NewsletterEmail($newsletter->title, $newsletter->content, $newsletter->media, $subscriber->email));
         }
+        $newsletter->update(['status' => 'published']);
+
 
         return redirect()->back()->with('success', 'Newsletter sent successfully to all subscribers!');
     }
