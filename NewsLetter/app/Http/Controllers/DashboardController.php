@@ -24,7 +24,7 @@ class DashboardController extends Controller
         $latestUsers = User::with('roles')->latest()->take(5)->get();
         $roles = Role::all();
 
-        $latestTemplates = NewsLetter::latest()->take(6)->get();
+        $latestTemplates = NewsLetter::with('creator')->latest()->take(6)->get();
         return view('admin.dashboard', compact('totalUsers', 'totalTemplates', 'totalSubscribers', 'latestUsers', 'roles', 'latestTemplates'));
     }
 
