@@ -32,7 +32,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 
 Route::get('/', function () {
     return view('welcome');
-})->middleware('guest');
+});
 
 Route::get('/register', [RegisterController::class, 'create'])->name("register")
     ->middleware('guest');
@@ -135,11 +135,13 @@ Route::group(['middleware' => ['auth', 'role:editor']], function () {
 
     Route::get('/send/{id}', [NewsLetterController::class, 'sendNewsletter']);
 
-    Route::get('/editProfile', function () {
+    Route::get('/updateProfile', function () {
         return view('redacteur.editProfile');
     });
 
     Route::post('/editProfile/{id}', [ProfileController::class, 'show']);
+//    Route::post('/updateProfile', [ProfileController::class, 'update']);
+
 
 });
 
@@ -157,6 +159,6 @@ Route::post('password/reset', 'App\Http\Controllers\Auth\ResetPasswordController
 Route::post('/subscribe', [NewsLetterController::class, 'subscribe'])->name('subscribe');
 
 
-Route::get('/profile', function (){
-    return view('profile.profile');
-});
+//Route::get('/profile', function (){
+//    return view('profile.profile');
+//});
