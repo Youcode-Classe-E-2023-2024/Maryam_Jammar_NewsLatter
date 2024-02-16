@@ -131,11 +131,13 @@ Route::group(['middleware' => ['auth', 'role:editor']], function () {
 
 
     Route::post('/deleteTemplate/{id}', [NewsLetterController::class, 'deleteTemplate']);
-
-    Route::get('/', function () {
-        Mail::to('maryamjammar1509@gmail.com')
-            ->send(new TemplateMail());
+    /***
+     * Route::get('/', function () {
+    Mail::to('maryamjammar1509@gmail.com')
+    ->send(new TemplateMail());
     });
+
+     */
 
 });
 
@@ -151,3 +153,8 @@ Route::post('password/reset', 'App\Http\Controllers\Auth\ResetPasswordController
 
 //Route::get('/welcome' , [NewsLetterController::class, 'index'])->name('welcome');
 Route::post('/subscribe', [NewsLetterController::class, 'subscribe'])->name('subscribe');
+
+
+Route::get('/profile', function (){
+    return view('profile.profile');
+});
