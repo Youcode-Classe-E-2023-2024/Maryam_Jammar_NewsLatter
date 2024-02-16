@@ -46,7 +46,7 @@ class LoginController extends Controller
             $user = User::find(Auth::id());
             if($user->hasRole("admin")) return redirect()->intended('/dashboard');
             elseif ($user->hasRole("editor")) return redirect()->intended('/redacteur');
-            else return redirect()->intended('/');
+//            else return redirect()->intended('/');
         }
 
         return back()->withErrors([
